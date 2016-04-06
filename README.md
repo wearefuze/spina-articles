@@ -4,13 +4,13 @@
 
 # Getting Started
 
-This is a News plugin for Spina CMS.
+This is a News/Blog plugin for Spina CMS based on articles.
 
 ```
-gem 'spina-articles', path: '/path/to/the/project'
+gem 'spina-articles'
 ```
 
-Make sure you run the migration installer to get started.
+Run the migration installer to get started.
 
 ```
 rails g spina_articles:install
