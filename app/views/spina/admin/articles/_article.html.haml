@@ -1,0 +1,8 @@
+%li.dd-item
+  %div.dd-item-inner
+    = link_to spina.edit_admin_article_path(article), class: 'button button-link button-small sortable-link' do
+      = article.title
+    %span.pull-right
+      = link_to spina.edit_admin_article_path(article), class: 'button button-small button-link dd-nodrag' do
+        = icon('pencil-outline')
+        = t('spina.edit')

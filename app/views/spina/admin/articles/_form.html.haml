@@ -1,0 +1,52 @@
+= form_for [spina, :admin, @article], html: { autocomplete: "off" } do |f|
+  - content_for :notification_alert do
+    = error_explanation!(@article)
+
+  #page_content.tab-content.active
+    .table-container
+      %table.table.table-form
+        %tr
+          %td
+            Title
+          %td
+            = f.text_field :title
+        %tr
+          %td
+            Slug
+          %td
+            = f.text_field :slug, placeholder: "URL of the article"
+        %tr
+          %td
+            Teaser
+            %small
+              Summary of the article that will appear on the listings page
+          %td
+            = f.text_area :teaser
+        %tr
+          %td
+            Body
+          %td
+            = render 'spina/admin/shared/rich_text_field', form: f, field: :body
+        %tr
+          %td
+            Publish date
+          %td
+            = f.text_field :publish_date, value: (@article.publish_date.strftime("%d-%m-%Y") unless @article.new_record?), class: 'datepicker'
+        %tr
+          %td
+            Author
+          %td
+            = f.text_field :author
+        %tr
+          %td
+            Draft?
+          %td
+            = f.check_box :draft, data: { switch: true }
+
+  %button.button.button-primary{ type: 'submit', data: { icon: 'o' } }
+    Save article
+
+  = link_to "Cancel", spina.admin_articles_path, class: 'button button-link'
+
+  - unless @article.new_record?
+    .pull-right= link_to "Delete", spina.admin_article_path(@article), method: :delete, confirm: "Are you sure you want to remove this article?", class: 'button button-link button-danger'
