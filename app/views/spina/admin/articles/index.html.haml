@@ -1,8 +1,7 @@
 .filters
-  %span{data: {dropdown: true}}
-    = link_to spina.new_admin_article_path, class: 'button button-primary' do
-      = icon('plus')
-      New Article
+  = link_to spina.new_admin_article_path, class: 'button button-primary' do
+    = icon('plus')
+    New Article
 
 .dd#pages_list
   - if @articles.any?

@@ -1,0 +1,5 @@
+%li{ class: ('active' if current_admin_path.start_with?('/articles')) }
+  = link_to spina.admin_articles_path do
+    %i.icon.icon-pencil-outline
+    = plugin.name
+    %small Here's were you'll add and edit your news and blog
