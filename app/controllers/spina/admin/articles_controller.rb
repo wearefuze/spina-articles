@@ -1,13 +1,10 @@
 module Spina
   module Admin
     class ArticlesController < AdminController
-      before_filter :set_breadcrumb
-      before_action :set_article, only: [:show, :edit, :update, :destroy]
+      before_action :set_breadcrumb
+      before_action :set_article, only: [:edit, :update, :destroy]
 
       layout "spina/admin/website"
-
-      def show
-      end
 
       def index
         @articles = Article.all
@@ -16,10 +13,6 @@ module Spina
       def new
         add_breadcrumb "New article", spina.new_admin_article_path
         @article = Article.new
-      end
-
-      def edit
-        add_breadcrumb @article.title
       end
 
       def create
@@ -33,7 +26,6 @@ module Spina
       end
 
       def update
-        add_breadcrumb @article.title
         if @article.update_attributes(article_params)
           redirect_to spina.admin_articles_url, notice: "Article saved"
         else
@@ -50,6 +42,7 @@ module Spina
 
       def set_article
         @article = Article.find(params[:id])
+        add_breadcrumb @article.title
       end
 
       def set_breadcrumb
