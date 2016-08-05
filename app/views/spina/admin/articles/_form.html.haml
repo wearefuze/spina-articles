@@ -12,7 +12,7 @@
     #header_actions
       %button.button.button-primary{type: 'submit'}
         = icon('check')
-        Save article
+        = t('spina.articles.save', scaffold_name: t('spina.articles.scaffold_name'))
       = link_to t('spina.cancel'), spina.admin_articles_path, class: 'button button button-secondary'
 
   - content_for :notification_alert do

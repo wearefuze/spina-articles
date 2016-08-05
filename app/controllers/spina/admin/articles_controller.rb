@@ -11,12 +11,12 @@ module Spina
       end
 
       def new
-        add_breadcrumb "New article", spina.new_admin_article_path
+        add_breadcrumb "New #{t('spina.articles.scaffold_name')}", spina.new_admin_article_path
         @article = Article.new
       end
 
       def create
-        add_breadcrumb "New article"
+        add_breadcrumb "New #{t('spina.articles.scaffold_name')}"
         @article = Article.new(article_params)
         if @article.save
           redirect_to spina.admin_articles_url
@@ -46,7 +46,7 @@ module Spina
       end
 
       def set_breadcrumb
-        add_breadcrumb "Articles", spina.admin_articles_path
+        add_breadcrumb t('spina.articles.scaffold_name_plural'), spina.admin_articles_path
       end
 
       def article_params

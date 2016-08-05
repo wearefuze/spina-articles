@@ -12,7 +12,7 @@
     %span
       = link_to spina.new_admin_article_path, class: 'button button-primary' do
         = icon('plus')
-        New article
+        =t('spina.articles.new', scaffold_name: t('spina.articles.scaffold_name'))
 
 .well
   - if @articles.any?
@@ -20,4 +20,5 @@
       %ol.dd-list
         = render partial: 'article', collection: @articles
   - else
-    %em No articles yet
+    %em
+      =t('spina.articles.empty', scaffold_name: t('spina.articles.scaffold_name_plural'))
