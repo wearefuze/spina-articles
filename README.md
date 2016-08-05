@@ -28,19 +28,49 @@ That's all it takes to get the plugin working :)
 
 To get you going you'll need to add the routes:
 
-    Spina::Engine.routes.draw do
-        resources :articles, only: [:show, :index]
-    end
+```ruby
+Spina::Engine.routes.draw do
+  resources :articles, only: [:show, :index]
+end
+```
 
-Then create the the controller `articles_controller.rb` inside controllers > spina > articles and include your index and show actions:
+Then create the controller `controllers/spina/articles_controller.rb` and include your index and show actions:
+
+```ruby
+module Spina
+  class ArticlesController < ApplicationController
+    layout 'layouts/default/application'
 
     def index
       @articles = Spina::Article.order(created_at: :desc).all
     end
 
     def show
-      @article ||= Article.find_by(slug: params[:id])
+      @article ||= Spina::Article.find_by(slug: params[:id])
     end
+  end
+end
+```
+
+Finally, create your index and show views in `views/spina/articles` folder
+
+### Locales
+
+You can override the locales file for further customization:
+
+```
+en:
+  spina:
+    articles:
+      scaffold_name: Career
+      scaffold_name_plural: Careers
+      title: ! '%{scaffold_name}'
+      all: ! 'All %{scaffold_name}'
+      new: ! 'New %{scaffold_name}'
+      save: ! 'Save %{scaffold_name}'
+      delete_confirmation: "Are you sure you want to delete <strong>%{subject}'s</strong> message?"
+      empty: ! 'No %{plural} Yet'
+```
 
 ##### TODO: Create categories and tagging
 
