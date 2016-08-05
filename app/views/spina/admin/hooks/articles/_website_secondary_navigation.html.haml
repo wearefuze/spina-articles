@@ -1,3 +1,3 @@
 %li{ class: ('active' if current_admin_path.start_with?('/articles')) }
   = link_to spina.admin_articles_path do
-    = plugin.name
+    = t('spina.articles.title', scaffold_name: t('spina.articles.scaffold_name_plural'))
