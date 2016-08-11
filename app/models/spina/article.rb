@@ -10,7 +10,8 @@ module Spina
     before_validation :set_slug
     after_save :rewrite_rule
 
-    scope :live, -> { where('publish_date <= ? AND draft = ?', Date.today, false) }
+    scope :live, -> { where('publish_date <= ? AND draft = ?', Date.today, 0) }
+    scope :newest_first, -> { order('publish_date DESC') }
 
     def materialized_path
       "/news/#{slug}"
