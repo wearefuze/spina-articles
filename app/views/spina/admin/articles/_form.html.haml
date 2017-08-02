@@ -6,6 +6,16 @@
         =t 'spina.pages.invisible_to_search_engines'
         %small=t 'spina.pages.invisible_to_search_engines_description'
 
+- if @article.errors.any?
+  - content_for :notifications do
+    .notification.notification-danger.animated.fadeInRight
+      = icon('exclamation')
+      .notification-message
+        =t 'spina.notifications.alert'
+        %small= @article.errors.full_messages.join('<br />').html_safe
+      = link_to '#', data: {close_notification: true} do
+        = icon('cross')
+
 = form_for [:admin, @article], multipart: true, html: { autocomplete: "off" } do |f|
   %header#header
     .breadcrumbs= render_breadcrumbs separator: '<div class="divider"></div>'
@@ -14,9 +24,6 @@
         = icon('check')
         = t('spina.articles.save', scaffold_name: t('spina.articles.scaffold_name'))
       = link_to t('spina.cancel'), spina.admin_articles_path, class: 'button button button-secondary'
-
-  - content_for :notification_alert do
-    = error_explanation!(@article)
 
   #page_content.tab-content.active.well
     .horizontal-form
