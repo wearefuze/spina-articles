@@ -1,23 +1,23 @@
 module Spina
   module Admin
     class ArticlesController < AdminController
-      before_filter :set_breadcrumb
+      before_action :set_breadcrumb
       before_action :set_article, only: [:edit, :update, :destroy]
 
       layout "spina/admin/admin"
 
       def index
-        @articles = Article.all
+        @articles = Spina::Article.all
       end
 
       def new
         add_breadcrumb "New #{t('spina.articles.scaffold_name')}", spina.new_admin_article_path
-        @article = Article.new
+        @article = Spina::Article.new
       end
 
       def create
         add_breadcrumb "New #{t('spina.articles.scaffold_name')}"
-        @article = Article.new(article_params)
+        @article = Spina::Article.new(article_params)
         if @article.save
           redirect_to spina.admin_articles_url
         else
