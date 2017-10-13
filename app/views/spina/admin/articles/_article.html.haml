@@ -1,11 +1,13 @@
 %li.dd-item
   %div.dd-item-inner
+    - if article.live?
+      %div.article-status.live
+    - if article.draft?
+      %div.article-status.draft
+    - if article.scheduled?
+      %div.article-status.scheduled
     = link_to spina.edit_admin_article_path(article), class: 'button button-link button-small sortable-link' do
       = article.title
-      %span.article-status
-        = 'live' if article.live?
-        = 'scheduled' if article.scheduled?
-        = 'draft' if article.draft?
     %span.pull-right
       = link_to spina.edit_admin_article_path(article), class: 'button button-small button-link dd-nodrag' do
         = icon('pencil-outline')
