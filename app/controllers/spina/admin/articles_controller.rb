@@ -7,7 +7,7 @@ module Spina
       layout "spina/admin/admin"
 
       def index
-        @articles = Spina::Article.order(:title).all
+        @articles = Article.order(publish_date: :desc)
       end
 
       def new
@@ -24,7 +24,7 @@ module Spina
           render :new
         end
       end
-      
+
       def edit
         add_breadcrumb @article.title
       end
