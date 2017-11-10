@@ -1,4 +1,4 @@
-class CreateSpinaArticlesTable < ActiveRecord::Migration
+class CreateSpinaArticlesTable < ActiveRecord::Migration[5.0]
   def change
     create_table :spina_articles do |t|
       t.string :title
