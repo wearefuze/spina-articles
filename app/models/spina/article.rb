@@ -13,6 +13,18 @@ module Spina
     scope :live, -> { where('publish_date <= ? AND draft = ?', Date.today, 0) }
     scope :newest_first, -> { order('publish_date DESC') }
 
+    def live?
+      true if self.publish_date <= Date.today && draft == 0
+    end
+
+    def scheduled?
+      true if self.publish_date >= Date.today && draft == 0
+    end
+
+    def draft?
+      draft == 1
+    end
+
     def materialized_path
       "/news/#{slug}"
     end
@@ -24,6 +36,7 @@ module Spina
     def prev_article
       self.class.where("id < ?", id).order("id DESC").first
     end
+
 
     private
 
