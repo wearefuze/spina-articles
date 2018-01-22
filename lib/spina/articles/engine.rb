@@ -1,9 +1,9 @@
 module Spina
   module Articles
     class Engine < ::Rails::Engine
-      initializer 'spina.plugin.register.spina_articles', before: :load_config_initializers do
+      config.before_initialize do
         ::Spina::Plugin.register do |plugin|
-          plugin.name = 'Articles'
+          plugin.name = 'articles'
           plugin.namespace = 'articles'
         end
       end
