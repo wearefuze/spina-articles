@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.name        = "spina-articles"
   s.version     = Spina::Articles::VERSION
   s.authors     = ["Dan Mitchell"]
-  s.email       = ["dan@digitalreflow.co.uk"]
-  s.homepage    = "http://www.digitalreflow.com"
+  s.email       = ["dan@danmitchell.co.uk"]
+  s.homepage    = "http://www.danmitchell.co.uk"
   s.summary     = "News/Blog plugin for Spina"
   s.description = "Plugin for Spina CMS to include a news or blog on your website"
 
