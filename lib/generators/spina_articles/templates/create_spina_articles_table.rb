@@ -8,8 +8,8 @@ class CreateSpinaArticlesTable < ActiveRecord::Migration[5.0]
       t.date :publish_date
       t.string :author
       t.integer :draft, default: true
-      t.integer :image_id
       t.timestamps
+      t.references :image, foreign_key: { to_table: :spina_images }
     end
   end
 end
