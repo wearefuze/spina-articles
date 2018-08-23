@@ -2,7 +2,7 @@ module Spina
   class Article < ActiveRecord::Base
     attr_accessor :old_materialized_path
 
-    belongs_to :image
+    belongs_to :image, optional: true
 
     validates :title, :body, :author, :publish_date, presence: true
     validates :slug, uniqueness: true
