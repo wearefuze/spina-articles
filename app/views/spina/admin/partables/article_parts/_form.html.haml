@@ -1,0 +1,7 @@
+.horizontal-form-group
+  .horizontal-form-label
+    = f.object.title
+  .horizontal-form-content
+    .select-dropdown
+      = f.fields_for :page_partable, f.object.page_partable do |ff|
+        = ff.select :article_id, options_for_select(Spina::Article.pluck(:title, :id), ff.object.article_id), include_blank: 'Please select'

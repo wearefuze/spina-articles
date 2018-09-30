@@ -81,4 +81,12 @@ en:
       empty: ! 'No %{plural} Yet'
 ```
 
+## Page part
+
+You can use `articles` on standard Spina pages by adding page part like the below example
+
+```
+{ name: 'featured_article', title: 'Featured article', partable_type: 'Spina::ArticlePart' }
+```
+
 This project rocks and uses MIT-LICENSE.
