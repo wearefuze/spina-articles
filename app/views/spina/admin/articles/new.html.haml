@@ -1,1 +1,2 @@
-= render 'form'
+= form_for [:admin, @article], html: {id: 'article_form', autocomplete: "off"} do |f|
+  = render 'form', f: f

@@ -30,11 +30,17 @@ module Spina
       end
 
       def update
-        add_breadcrumb @article.title
-        if @article.update_attributes(article_params)
-          redirect_to spina.admin_articles_url
-        else
-          render :edit
+        respond_to do |format|
+          if @article.update_attributes(article_params)
+            add_breadcrumb @article.title
+            @article.touch
+            format.html { redirect_to spina.admin_articles_url, notice: t('spina.articles.saved', scaffold_name: t('spina.articles.scaffold_name')) }
+            format.js
+          else
+            format.html do
+              render :edit, layout: 'spina/admin/admin'
+            end
+          end
         end
       end
 

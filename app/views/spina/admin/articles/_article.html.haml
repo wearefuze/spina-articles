@@ -6,9 +6,9 @@
       %div.article-status.draft
     - if article.scheduled?
       %div.article-status.scheduled
-    = link_to spina.edit_admin_article_path(article), class: 'button button-link button-small sortable-link' do
+    = link_to spina.edit_admin_article_path(article.id), class: 'button button-link button-small sortable-link' do
       = article.title
     %span.pull-right
-      = link_to spina.edit_admin_article_path(article), class: 'button button-small button-link dd-nodrag' do
+      = link_to spina.edit_admin_article_path(article.id), class: 'button button-small button-link dd-nodrag' do
         = icon('pencil-outline')
         = t('spina.edit')
