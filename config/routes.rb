@@ -1,5 +1,5 @@
 Spina::Engine.routes.draw do
   namespace :admin do
-    resources :articles
+    resources :articles, except: :show
   end
 end

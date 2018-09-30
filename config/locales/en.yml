@@ -7,5 +7,6 @@ en:
       all: ! 'All %{scaffold_name}'
       new: ! 'New %{scaffold_name}'
       save: ! 'Save %{scaffold_name}'
-      delete_confirmation: "Are you sure you want to delete <strong>%{subject}'s</strong> message?"
+      delete_confirmation: "Are you sure you want to delete <strong>%{subject}</strong>?"
       empty: ! 'No %{scaffold_name} Yet'
+      saved: ! '%{scaffold_name} saved'

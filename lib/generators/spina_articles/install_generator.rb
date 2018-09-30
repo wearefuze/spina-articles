@@ -1,25 +1,23 @@
-require 'rails/generators/base'
-require 'rails/generators/migration'
-require 'rails/generators/active_record'
-
 module SpinaArticles
-  module Generators
-    class InstallGenerator < Rails::Generators::Base
+  class InstallGenerator < Rails::Generators::Base
 
-      include Rails::Generators::Migration
-      extend ActiveRecord::Generators::Migration
-
-      source_root File.expand_path('../templates', __FILE__)
-
-      def self.next_migration_number(path)
-        ActiveRecord::Generators::Base.next_migration_number(path)
-      end
-
-      def copy_migration_file
-        migration_template "create_spina_articles_table.rb", Rails.root.join("db/migrate/create_spina_articles_table.rb")
-        migration_template "add_photo_id_to_spina_articles.rb", Rails.root.join("db/migrate/add_photo_id_to_spina_articles.rb")
-      end
-
+    def copy_migrations
+      return if Rails.env.production?
+      rake 'spina_articles:install:migrations'
     end
+
+    def run_migrations
+      rake 'db:migrate'
+    end
+
+    def feedback
+      puts
+      puts 'Spina Articles has been succesfully installed!'
+      puts
+      puts 'Restart your server and visit http://localhost:3000 in your browser!'
+      puts "The admin backend is located at http://localhost:3000/#{Spina.config.backend_path}."
+      puts
+    end
+
   end
 end

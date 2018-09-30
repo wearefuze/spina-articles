@@ -30,7 +30,7 @@ To get you going you'll need to add the routes:
 
 ```ruby
 Spina::Engine.routes.draw do
-  resources :articles, only: [:show, :index]
+  resources :articles, only: [:show, :index], path: 'blog'
 end
 ```
 
@@ -39,6 +39,7 @@ Then create the controller `controllers/spina/articles_controller.rb` and includ
 ```ruby
 module Spina
   class ArticlesController < ApplicationController
+    before_action :set_page
     layout 'layouts/default/application'
 
     def index
@@ -46,7 +47,15 @@ module Spina
     end
 
     def show
-      @article ||= Spina::Article.find_by(slug: params[:id])
+      @article = Spina::Article.friendly.find(params[:id])
+    end
+
+    def set_page
+      @page = Spina::Page.find_or_create_by(name: 'blog') do |page|
+        page.title = 'Blog'
+        page.link_url = '/blog'
+        page.deletable = false
+      end
     end
   end
 end
@@ -71,7 +80,5 @@ en:
       delete_confirmation: "Are you sure you want to delete <strong>%{subject}'s</strong> message?"
       empty: ! 'No %{plural} Yet'
 ```
-
-##### TODO: Create categories and tagging
 
 This project rocks and uses MIT-LICENSE.
