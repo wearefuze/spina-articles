@@ -24,11 +24,11 @@ module Spina
     end
 
     def next_article
-      self.class.where("id > ?", id).order("id ASC").first
+      self.class.live.where("id > ?", id).order("id ASC").first
     end
 
     def prev_article
-      self.class.where("id < ?", id).order("id DESC").first
+      self.class.live.where("id < ?", id).order("id DESC").first
     end
   end
 end
