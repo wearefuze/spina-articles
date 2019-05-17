@@ -1,6 +1,4 @@
-![Spina CMS](http://www.spinacms.com/spinacms.png)
-
-[Visit the website](http://www.spinacms.com)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=dankmitchell/spina-articles)](https://dependabot.com)
 
 # Getting Started
 
