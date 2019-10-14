@@ -28,6 +28,16 @@
   .horizontal-form
     .horizontal-form-group
       .horizontal-form-label
+        SEO Title
+      .horizontal-form-content
+        = f.text_field :seo_title
+    .horizontal-form-group
+      .horizontal-form-label
+        SEO Description
+      .horizontal-form-content
+        = f.text_field :seo_description
+    .horizontal-form-group
+      .horizontal-form-label
         = Spina::Page.human_attribute_name :title
       .horizontal-form-content
         = f.text_field :title
