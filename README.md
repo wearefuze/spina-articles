@@ -65,7 +65,7 @@ Finally, create your index and show views in `views/spina/articles` folder
 
 You can override the locales file for further customization:
 
-```
+```ruby
 en:
   spina:
     articles:
@@ -83,7 +83,7 @@ en:
 
 You can use `articles` on standard Spina pages by adding page part like the below example
 
-```
+```ruby
 { name: 'featured_article', title: 'Featured article', partable_type: 'Spina::ArticlePart' }
 ```
 

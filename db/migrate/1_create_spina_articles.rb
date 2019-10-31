@@ -1,6 +1,8 @@
 class CreateSpinaArticles < ActiveRecord::Migration[5.0]
   def change
     create_table :spina_articles do |t|
+      t.string :seo_title
+      t.string :seo_description
       t.string :title
       t.string :slug
       t.text :body
