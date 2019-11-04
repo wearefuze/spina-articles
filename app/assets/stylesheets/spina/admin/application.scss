@@ -1,19 +1,21 @@
-@import 'spina';
 .article-status {
+  height: 52px;
+  left: 0;
   position: absolute;
   top: 0;
-  left: 0;
-  height: 52px;
-  width: 7px;
   transition: all 0.2s;
+  width: 7px;
+
   &.live {
-    background-color: $primary-color;
+    background-color: #3adb76;
   }
+
   &.draft {
-    background-color: #c3c3c3;
+    background-color: #767676;
   }
+
   &.scheduled {
-    background-color: #65b2b4;
+    background-color: #1779ba;
   }
 }
 
