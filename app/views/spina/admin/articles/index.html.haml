@@ -7,7 +7,11 @@
         %small=t 'spina.pages.invisible_to_search_engines_description'
 
 %header#header
-  .breadcrumbs= render_breadcrumbs seperator: '<div class="divider"></div>'
+  .breadcrumbs
+    = render_breadcrumbs seperator: '<div class="divider"></div>'
+    = link_to articles_path, target: :blank, class: 'button button-hollow button-small' do
+      %i.icon.icon-export{style: 'margin: 0'}
+      
   #header_actions
     %span
       = link_to spina.new_admin_article_path, class: 'button button-primary' do
