@@ -1,27 +1,27 @@
-.article-status {
-  height: 52px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  transition: all 0.2s;
-  width: 7px;
-
-  &.live {
-    background-color: #3adb76;
-  }
-
-  &.draft {
-    background-color: #767676;
-  }
-
-  &.scheduled {
-    background-color: #1779ba;
-  }
-}
-
-.dd-item:hover {
-  .article-status {
-    opacity: 0.7;
-    width: 9px;
-  }
-}
+// .article-status {
+//   height: 52px;
+//   left: 0;
+//   position: absolute;
+//   top: 0;
+//   transition: all 0.2s;
+//   width: 7px;
+//
+//   &.live {
+//     background-color: #3adb76;
+//   }
+//
+//   &.draft {
+//     background-color: #767676;
+//   }
+//
+//   &.scheduled {
+//     background-color: #1779ba;
+//   }
+// }
+//
+// .dd-item:hover {
+//   .article-status {
+//     opacity: 0.7;
+//     width: 9px;
+//   }
+// }
