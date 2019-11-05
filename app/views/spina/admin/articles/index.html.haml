@@ -11,7 +11,7 @@
     = render_breadcrumbs seperator: '<div class="divider"></div>'
     = link_to articles_path, target: :blank, class: 'button button-hollow button-small' do
       %i.icon.icon-export{style: 'margin: 0'}
-      
+
   #header_actions
     %span
       = link_to spina.new_admin_article_path, class: 'button button-primary' do
@@ -20,7 +20,7 @@
 
 .well
   - if @articles.any?
-    .dd#pages_list
+    .dd
       %ol.dd-list
         = render partial: 'article', collection: @articles
   - else
