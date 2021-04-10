@@ -60,17 +60,28 @@
       .horizontal-form-label
         Image
       .horizontal-form-content
-        = link_to admin_media_picker_path(selected_ids: [f.object.image_id], hidden_field_id: 'media_picker_image_id'), remote: true, class: 'media_picker clearfix' do
-          .placeholder
-            %span.button.button-small.button-round
-              %i.icon.icon-dots
-              = (t'spina.images.choose_image')
+        .page-form-label
+          = f.object.title
+          .page-form-control{data: {controller: "image-form"}}
+            .page-form-media-picker
+              %div{style: "width: 100%"}
+                = link_to admin_media_picker_path(selected_ids: [f.object.image_id], input: "media_picker_#{f.object.object_id}", mode: "single"), remote: true, class: 'image', data: {target: 'image-form.image'} do
+                  .page-form-media-picker-placeholder=t "spina.images.choose_image"
+                  %div{id: "media_picker_#{f.object.object_id}"}
+                    = f.hidden_field :image_id, data: {target: 'image-form.imageId'}
+                    = hidden_field_tag :signed_blob_id, nil, data: {target: 'image-form.signedBlobId'}
+                    = hidden_field_tag :filename, nil, data: {target: 'image-form.filename'}
+                  %div{style: "width: 200px; height: 150px; overflow: hidden"}
+                    - if f.object&.image&.file&.attached?
+                      .image
+                        = image_tag main_app.url_for(f.object.image.file.variant(resize: "300x300^", crop: "300x300+0+0"))
 
-          - if f.object&.image&.file&.attached?
-            .image
-              = image_tag variant(f.object.image.file, resize: "300x300^", crop: "300x300+0+0")
+                = hidden_field_tag :alt, placeholder: "Alt text", class: 'page-form-media-picker-alt-text'
 
-          = f.hidden_field :image_id, data: { hidden_field_id: "media_picker_image_id" }
+              = button_tag type: :default, class: 'button button-small button-default', data: {action: "image-form#remove"} do
+                %i.icon.icon-cross{style: "margin: 0; font-size: 10px"}
+
+
     .horizontal-form-group
       .horizontal-form-label
         Publish date
