@@ -67,7 +67,7 @@
               %i.icon.icon-dots
               = t('spina.images.choose_image')
           .image
-            = image_tag (f.object.image.file)
+            = image_tag(f.object.image.file.variant(resize: "300x300"))
         - else
           .placeholder
             %span.button.button-small.button-round
