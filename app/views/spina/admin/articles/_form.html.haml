@@ -66,7 +66,7 @@
               %i.icon.icon-dots
               = (t'spina.images.choose_image')
 
-          - if f.object&.image&.file&.attached?
+          - # if f.object&.image&.file&.attached?
             .image
               = image_tag(f.object.image.variant(resize: "300x300"), size: "300")
 
