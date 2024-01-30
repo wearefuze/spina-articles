@@ -56,24 +56,23 @@
         Body
       .horizontal-form-content
         = render 'spina/admin/shared/rich_text_field', f: f, field: :body
-      .horizontal-form-group
-        .horizontal-form-label
-          Image
-        .horizontal-form-content
-         = link_to admin_media_picker_path(selected_ids: [f.object.image_id], hidden_field_id: 'media_picker_image_id'), remote: true, class: 'media_picker clearfix' do
-          - if f.object&.image&.file&.attached?
-            .placeholder.pull-right
-              %span.button.button-small.button-round
-                %i.icon.icon-dots
-                = t('spina.images.choose_image')
-            .image
-              = image_tag variant(f.object.image.file, resize: "300x300^", crop: "300x300+0+0")
-          - else
-            .placeholder
-              %span.button.button-small.button-round
-                %i.icon.icon-dots
-                = t 'spina.pages.image_picker'
-          = f.hidden_field :image_id, data: { hidden_field_id: 'media_picker_image_id' }
+    .horizontal-form-group
+      .horizontal-form-label
+        Image
+      .horizontal-form-content
+        - if f.object&.image&.file&.attached?
+          .placeholder.pull-right
+            %span.button.button-small.button-round
+              %i.icon.icon-dots
+              = t('spina.images.choose_image')
+          .image
+            = image_tag variant(f.object.image.file, resize: "300x300^", crop: "300x300+0+0")
+        - else
+          .placeholder
+            %span.button.button-small.button-round
+              %i.icon.icon-dots
+              = t 'spina.pages.image_picker'
+        = f.hidden_field :image_id, data: { hidden_field_id: 'media_picker_image_id' }
     .horizontal-form-group
       .horizontal-form-label
         Publish date
