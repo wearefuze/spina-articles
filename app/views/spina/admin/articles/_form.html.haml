@@ -20,7 +20,7 @@
   .breadcrumbs
     = render_breadcrumbs separator: '<div class="divider"></div>'
     - unless @article.new_record?
-      = link_to main_app.admin_article_path(@article), target: :blank, class: 'button button-hollow button-small' do
+      = link_to spina.admin_article_path(@article), target: :blank, class: 'button button-hollow button-small' do
         %i.icon.icon-export{style: 'margin: 0'}
 
   #header_actions
