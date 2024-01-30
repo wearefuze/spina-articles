@@ -68,7 +68,7 @@
 
           - if f.object&.image&.file&.attached?
             .image
-              = image_tag(f.object.image.file)
+              = image_tag(f.object.image)
 
           = f.hidden_field :image_id, data: { hidden_field_id: "media_picker_image_id" }
     .horizontal-form-group
