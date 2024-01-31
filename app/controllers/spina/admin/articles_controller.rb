@@ -31,7 +31,7 @@ module Spina
 
       def update
         respond_to do |format|
-          if @article.update_attributes(article_params)
+          if @article.update_attribute(article_params)
             add_breadcrumb @article.title
             @article.touch
             format.html { redirect_to spina.admin_articles_url, notice: t('spina.articles.saved', scaffold_name: t('spina.articles.scaffold_name')) }
