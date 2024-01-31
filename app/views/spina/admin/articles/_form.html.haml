@@ -72,7 +72,7 @@
           = f.hidden_field :image_id, data: { hidden_field_id: "media_picker_image_id" }    
     .horizontal-form-group
       .horizontal-form-label
-        #{ @article.image }    
+        #{ @article.image_url(@article.image) }    
     .horizontal-form-group
       .horizontal-form-label
         Publish date
