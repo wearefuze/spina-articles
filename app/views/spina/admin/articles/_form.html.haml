@@ -66,10 +66,6 @@
               %i.icon.icon-dots
               = (t'spina.images.choose_image')
 
-          #- if f.object&.image&.file&.attached?
-          #  .image
-          #    = image_tag variant(f.object.image.file, resize: "300x300^", crop: "300x300+0+0")
-
           = f.hidden_field :image_id, data: { hidden_field_id: "media_picker_image_id" }    
     .horizontal-form-group
       .horizontal-form-label
