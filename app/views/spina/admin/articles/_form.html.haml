@@ -67,12 +67,9 @@
               = (t'spina.images.choose_image')
           - if f.object&.image&.file&.attached?
             .image
-              = image_tag main_app.url_for(@article.image.variant(resize: '400'))
+              = image_tag main_app.url_for(@article.image_url)
 
           = f.hidden_field :image_id, data: { hidden_field_id: "media_picker_image_id" }    
-    .horizontal-form-group
-      .horizontal-form-label
-        #{ @article.image_url(@article.image) }    
     .horizontal-form-group
       .horizontal-form-label
         Publish date
